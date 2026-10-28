@@ -9,6 +9,22 @@ express.use(Express.urlencoded({ extended: true }));
 express.use(Express.static('public'));
 express.use(cookieParser());
 
+// Public, read-only status endpoints used by the Project Flipped launcher.
+// CORS only exposes these endpoints; it does not grant API authorization.
+express.use((req, res, next) => {
+    if (req.path === "/api/health" || req.path === "/fortnite/api/version") {
+        res.set("Access-Control-Allow-Origin", "*");
+        res.set("Access-Control-Allow-Methods", "GET, HEAD, OPTIONS");
+        res.set("Access-Control-Allow-Headers", "Content-Type");
+        if (req.method === "OPTIONS") return res.sendStatus(204);
+    }
+    next();
+});
+
+express.get("/api/health", (req, res) => {
+    res.status(200).json({ status: "ok", service: "lawinserver" });
+});
+
 express.use(require("./structure/party.js"));
 express.use(require("./structure/discovery.js"))
 express.use(require("./structure/privacy.js"));
