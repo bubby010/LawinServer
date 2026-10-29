@@ -14,7 +14,7 @@ const FRONTEND_URL = (process.env.FRONTEND_URL || "http://localhost:8080").repla
 const DISCORD_CLIENT_ID = process.env.DISCORD_CLIENT_ID || "";
 const DISCORD_CLIENT_SECRET = process.env.DISCORD_CLIENT_SECRET || "";
 const SESSION_SECRET = process.env.SESSION_SECRET || "";
-const DISCORD_CALLBACK_URL = process.env.DISCORD_CALLBACK_URL || "https://p01--lawinserver--wxsd2297cwp7.code.run/auth/discord/callback";
+const DISCORD_CALLBACK_URL = process.env.DISCORD_CALLBACK_URL || "https://p01--lawinserver--54fsx454j7vx.code.run/auth/discord/callback";
 const SESSION_MAX_AGE_SECONDS = 7 * 24 * 60 * 60;
 const COOKIE_OPTIONS = { httpOnly: true, secure: true, sameSite: "none", path: "/" };
 
